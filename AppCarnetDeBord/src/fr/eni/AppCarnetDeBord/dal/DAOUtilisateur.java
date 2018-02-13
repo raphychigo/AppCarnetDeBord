@@ -17,8 +17,11 @@ import fr.eni.AppCarnetDeBord.bo.Conducteur;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 
 public class DAOUtilisateur implements DAO {
+	
 	private final static String  ADMIN = "Administrateur";
 	private final static String  CONDUCTEUR = "Conducteur";
+	
+	
 	public static void insert(Utilisateur user, String mdp) throws SQLException {
 		Connection cnx = null;
 		try {
@@ -114,78 +117,160 @@ public class DAOUtilisateur implements DAO {
 				}
 			}
 		}
-		return lf;
+		return lu;
 	}
 	
-//	public static Utilisateur selectUser(String email,String mdp) throws SQLException {
-//		Connection cnx = null;
-//		Utilisateur u = null;
-//		try {
-//			
-//
-//			cnx = AccesBase.getConnection();
-//			String select = "select idUser,nom,prenom,email,droits from Utilisateurs where email = ? and mdp = ?";
-//			PreparedStatement rqt = cnx.prepareStatement(select);
-//			rqt.setString(1, email);
-//			rqt.setString(2, mdp);
-//			ResultSet res = rqt.executeQuery();
-//			if(res.next()){
-//				u = new Utilisateur(res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("droits"));
-//				u.setIdUser(res.getInt("idUser"));	
-//			}
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//
-//		} finally {
-//			if (cnx != null) {
-//				try {
-//					cnx.close();
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//		return u;
-//	}
-//
-//	
-//	public static Utilisateur selectUserById(int id) throws SQLException {
-//		Connection cnx = null;
-//		Utilisateur u = null;
-//		try {
-//			
-//
-//			cnx = AccesBase.getConnection();
-//			String select = "select idUser,nom,prenom,email,droits from Utilisateurs where idUser = ?";
-//			PreparedStatement rqt = cnx.prepareStatement(select);
-//			rqt.setInt(1, id);
-//			
-//			ResultSet res = rqt.executeQuery();
-//			if(res.next()){
-//				u = new Utilisateur(res.getString("nom"),res.getString("prenom"),res.getString("email"),res.getString("droits"));
-//				u.setIdUser(res.getInt("idUser"));	
-//			}
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//
-//		} finally {
-//			if (cnx != null) {
-//				try {
-//					cnx.close();
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//		return u;
-//	}
-//	
-//	
-//	
-//}
+	
+	public static Utilisateur selectUser(String login,String mdp) throws SQLException {
+		Connection cnx = null;
+		
+		try {
+			cnx = AccesBase.getConnection();
+			String select = "select idUtilisateur,nomUtilisateur,prenomUtilisateur,typeUtilisateur from Utilisateurs where codeUtilisateur = ? and mdpUtilisateur = ?";
+			PreparedStatement rqt = cnx.prepareStatement(select);
+			rqt.setString(1, login);
+			rqt.setString(2, mdp);
+			ResultSet res = rqt.executeQuery();
+			if(res.next()){
+				if(res.getString("typeUtilisateur").trim().equals(ADMIN)){
+					Administrateur admin = new Administrateur(res.getString("nomUtilisateur"),res.getString("prenomUtilisateur"));
+					admin.setId(res.getInt("idUtilisateur"));
+					return admin;
+				}
+				if(res.getString("typeUtilisateur").trim().equals(CONDUCTEUR)){
+					Conducteur conducteur = new Conducteur(res.getString("nomUtilisateur"),res.getString("prenomUtilisateur"));
+					conducteur.setId(res.getInt("idUtilisateur"));
+					return conducteur;
+				}	
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+
+	
+	public static Utilisateur selectById(int id) throws SQLException {
+		Connection cnx = null;
+		
+		try {
+			cnx = AccesBase.getConnection();
+			String select = "select nomUtilisateur,prenomUtilisateur,typeUtilisateur from Utilisateurs where idUtilisateur = ?";
+			PreparedStatement rqt = cnx.prepareStatement(select);
+			rqt.setInt(1, id);
+			ResultSet res = rqt.executeQuery();
+			if(res.next()){
+				if(res.getString("typeUtilisateur").trim().equals(ADMIN)){
+					Administrateur admin = new Administrateur(res.getString("nomUtilisateur"),res.getString("prenomUtilisateur"));
+					admin.setId(res.getInt("idUtilisateur"));
+					return admin;
+				}
+				if(res.getString("typeUtilisateur").trim().equals(CONDUCTEUR)){
+					Conducteur conducteur = new Conducteur(res.getString("nomUtilisateur"),res.getString("prenomUtilisateur"));
+					conducteur.setId(res.getInt("idUtilisateur"));
+					return conducteur;
+				}	
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return null;
+	}
+	
+	
+	public static void delete(int id) throws SQLException {
+		Connection cnx = null;
+		try {
+			cnx = AccesBase.getConnection();
+			String delete = "delete from Utilisateurs where idUtilisateur = ?";
+			PreparedStatement rqt = cnx.prepareStatement(delete);
+			rqt.setInt(1, id);
+			rqt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+	
+	
+	public static void update(Utilisateur user, String mdp) throws SQLException {
+		Connection cnx = null;
+		try {
+			cnx = AccesBase.getConnection();
+			String update = "update Utilisateurs set codeUtilisateur=?,nomUtilisateur=?,prenomUtilisateur=?,mdpUtilisateur=? where idUtilisateur=?";
+			PreparedStatement rqt = cnx.prepareStatement(update);
+			
+			if(user instanceof Administrateur){
+				Administrateur admin = (Administrateur)user;
+				rqt.setString(1, admin.getLogin());
+				rqt.setString(2, admin.getNom());
+				rqt.setString(3, admin.getPrenom());
+				rqt.setString(4, mdp);	
+			}
+			if(user instanceof Conducteur){
+				Conducteur conducteur = (Conducteur)user;
+				rqt.setString(1, conducteur.getLogin());
+				rqt.setString(2, conducteur.getNom());
+				rqt.setString(3, conducteur.getPrenom());
+				rqt.setString(4, mdp);	
+			}
+			
+			rqt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+	
+}
+
+ 
+  
