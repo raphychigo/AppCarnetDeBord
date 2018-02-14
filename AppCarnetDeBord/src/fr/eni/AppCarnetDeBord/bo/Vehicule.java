@@ -6,8 +6,8 @@ public class Vehicule {
 	 private String immatriculation;
 	 private String marque;
 	 private String modele;
-	 private Integer nbPlaces;
 	 private int kilometrage;
+	 private Integer nbPlaces;	 
 	 private boolean enCirculation;
 	 private Lieu localisation;
 	 
@@ -15,13 +15,13 @@ public class Vehicule {
 		 super();
 	 }
 	 
-	 public Vehicule(String immatriculation, String marque, String modele, Integer nbPlaces, int kilometrage, boolean enCirculation, Lieu localisation) {
+	 public Vehicule(String immatriculation, String marque, String modele, int kilometrage, Integer nbPlaces, boolean enCirculation, Lieu localisation) {
 		super();
 		setImmatriculation(immatriculation);
 		setMarque(marque);
 		setModele(modele);
-		setNbPlaces(nbPlaces);
 		setKilometrage(kilometrage);
+		setNbPlaces(nbPlaces);		
 		setEnCirculation(enCirculation);
 		setLocalisation(localisation);
 	}

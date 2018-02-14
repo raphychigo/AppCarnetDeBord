@@ -7,14 +7,15 @@ public class Trajet {
 	private Integer id;
 	private GregorianCalendar dateDebut;
 	private GregorianCalendar dateFin;
-	private String commentaire;
-	private Motif motif;
-	private Lieu lieuReception;
-	private String destination;
+	private String commentaire;	
 	private Double kilometrageOrigine;
-	private Double kmParcourue;
+	private Double kilometrageFin;
+	private Double kmParcourus;
 	private Double nbLitres;
 	private Double prixTotal;
+	private Motif motif;
+	private Lieu lieuReception;
+	private Lieu destination;
 	private Vehicule vehicule;
 	private Conducteur conducteur;
 
@@ -22,7 +23,7 @@ public class Trajet {
 		super();
 	}
 
-	public Trajet(GregorianCalendar dateDebut, Motif motif, String commentaire, Lieu lieuReception, String destination,
+	public Trajet(GregorianCalendar dateDebut, Motif motif, String commentaire, Lieu lieuReception, Lieu destination,
 			Double kilometrageOrigine, Vehicule vehicule, Conducteur conducteur) {
 		super();
 		this.dateDebut = dateDebut;
@@ -69,11 +70,11 @@ public class Trajet {
 		this.lieuReception = lieuReception;
 	}
 
-	public String getDestination() {
+	public Lieu getDestination() {
 		return destination;
 	}
 
-	public void setDestination(String destination) {
+	public void setDestination(Lieu destination) {
 		this.destination = destination;
 	}
 
@@ -85,12 +86,12 @@ public class Trajet {
 		this.kilometrageOrigine = kilometrageOrigine;
 	}
 
-	public Double getKmParcourue() {
-		return kmParcourue;
+	public Double getKmParcourus() {
+		return kmParcourus;
 	}
 
-	public void setKmParcourue(Double kmParcourue) {
-		this.kmParcourue = kmParcourue;
+	public void setKmParcourus(Double kmParcourue) {
+		this.kmParcourus = kmParcourue;
 	}
 
 	public Double getNbLitres() {
