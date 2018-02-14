@@ -8,7 +8,7 @@ public class Trajet {
 	private GregorianCalendar dateDebut;
 	private GregorianCalendar dateFin;
 	private String commentaire;
-	private String nature;
+	private Motif motif;
 	private String lieuReception;
 	private String destination;
 	private Double kilometrageOrigine;
@@ -22,12 +22,12 @@ public class Trajet {
 		super();
 	}
 
-	public Trajet(GregorianCalendar dateDebut, String nature, String commentaire, String lieuReception, String destination,
+	public Trajet(GregorianCalendar dateDebut, Motif motif, String commentaire, String lieuReception, String destination,
 			Double kilometrageOrigine, Vehicule vehicule, Conducteur conducteur) {
 		super();
 		this.dateDebut = dateDebut;
 		this.commentaire = commentaire;
-		this.nature = nature;
+		this.setMotif(motif);
 		this.lieuReception = lieuReception;
 		this.destination = destination;
 		this.kilometrageOrigine = kilometrageOrigine;
@@ -59,13 +59,7 @@ public class Trajet {
 		this.dateFin = dateFin;
 	}
 
-	public String getNature() {
-		return nature;
-	}
-
-	public void setNature(String nature) {
-		this.nature = nature;
-	}
+	
 
 	public String getLieuReception() {
 		return lieuReception;
@@ -137,6 +131,14 @@ public class Trajet {
 
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
+	}
+
+	public Motif getMotif() {
+		return motif;
+	}
+
+	public void setMotif(Motif motif) {
+		this.motif = motif;
 	}
 
 }
