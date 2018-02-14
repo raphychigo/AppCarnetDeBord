@@ -8,23 +8,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.eni.AppCarnetDeBord.bo.Lieu;
+import fr.eni.AppCarnetDeBord.bo.Motif;
 
-public class DAOLieu implements DAO{
+public class DAOMotif implements DAO{
 
-	public static void insert(Lieu lieu) throws SQLException {
+	public static void insert(Motif motif) throws SQLException {
 		Connection cnx = null;
 		try {
 			cnx = AccesBase.getConnection();
-			String insert = "insert into Lieux(nomLieu) " + "values(?);";
+			String insert = "insert into Motifs(libelleMotif) " + "values(?);";
 			PreparedStatement rqt = cnx.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 						
-			Lieu leLieu = lieu;
-			rqt.setString(1, leLieu.getNomLieu());			
+			
+			rqt.setString(1, motif.getNomMotif());			
 			
 			rqt.executeUpdate();
 			ResultSet key = rqt.getGeneratedKeys();
 			key.next();
-			leLieu.setIdLieu(key.getInt(1));			
+			motif.setIdMotif(key.getInt(1));			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -42,18 +43,18 @@ public class DAOLieu implements DAO{
 		}
 	}
 	
-	public static ArrayList<Lieu> selectAll() throws SQLException {
+	public static ArrayList<Motif> selectAll() throws SQLException {
 		Connection cnx = null;
-		ArrayList<Lieu> lesLieux = new ArrayList<>();
+		ArrayList<Motif> lesMotifs = new ArrayList<>();
 		try {
 			cnx = AccesBase.getConnection();
-			String select = "select idLieu,nomLieu from Lieux";
+			String select = "select idMotif,libelleMotif from Motifs";
 			Statement rqt = cnx.createStatement();
 			ResultSet res = rqt.executeQuery(select);
 			while (res.next()) {				
-				Lieu unLieu = new Lieu(res.getString("nomLieu"));
-				unLieu.setIdLieu(res.getInt("idLieu"));
-				lesLieux.add(unLieu);				
+				Motif unMotif = new Motif(res.getString("libelleMotif"));
+				unMotif.setIdMotif(res.getInt("idMotif"));
+				lesMotifs.add(unMotif);				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,22 +69,22 @@ public class DAOLieu implements DAO{
 				}
 			}
 		}
-		return lesLieux;
+		return lesMotifs;
 	}
 	
-	public static Lieu selectById(int id) throws SQLException {
+	public static Motif selectById(int id) throws SQLException {
 		Connection cnx = null;
-		Lieu leLieu = null;
+		Motif leMotif = null;
 		try {
 			cnx = AccesBase.getConnection();
-			String select = "select nomLieu from Lieux where idLieu = ?";
+			String select = "select libelleMotif from Motifs where idMotif = ?";
 			PreparedStatement rqt = cnx.prepareStatement(select);
 			rqt.setInt(1, id);
 			ResultSet res = rqt.executeQuery();
 			if(res.next()){				
-				leLieu = new Lieu(res.getString("nomLieu"));
-				leLieu.setIdLieu(res.getInt("idLieu"));
-				return leLieu;				
+				leMotif = new Motif(res.getString("libelleMotif"));
+				leMotif.setIdMotif(res.getInt("idMotif"));
+				return leMotif;				
 			}
 			
 		} catch (SQLException e) {
@@ -100,14 +101,14 @@ public class DAOLieu implements DAO{
 				}
 			}
 		}
-		return leLieu;
+		return leMotif;
 	}
 	
 	public static void delete(int id) throws SQLException {
 		Connection cnx = null;
 		try {
 			cnx = AccesBase.getConnection();
-			String delete = "delete from Lieux where idlieu = ?";
+			String delete = "delete from Motifs where idMotif = ?";
 			PreparedStatement rqt = cnx.prepareStatement(delete);
 			rqt.setInt(1, id);
 			rqt.executeUpdate();
@@ -127,15 +128,14 @@ public class DAOLieu implements DAO{
 		}
 	}
 	
-	public static void update(Lieu unLieu) throws SQLException {
+	public static void update(Motif motif) throws SQLException {
 		Connection cnx = null;
 		try {
 			cnx = AccesBase.getConnection();
-			String update = "update Lieux set nomLieu=? where idlieu=?";
+			String update = "update Motifs set libelleMotif=? where idMotif=?";
 			PreparedStatement rqt = cnx.prepareStatement(update);
-			
-			rqt.setString(1, unLieu.getNomLieu());
-			rqt.setInt(2, unLieu.getIdLieu());
+			rqt.setString(1, motif.getNomMotif());
+			rqt.setInt(2, motif.getIdMotif());
 			rqt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
