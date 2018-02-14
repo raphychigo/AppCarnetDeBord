@@ -7,19 +7,20 @@ public class Vehicule {
 	 private String marque;
 	 private String modele;
 	 private Integer nbPlaces;
-	 private Double kilometrage;
-	
+	 private int kilometrage;
+	 private boolean enCirculation;
 	 public Vehicule(){
 		 super();
 	 }
 	 
-	 public Vehicule(String immatriculation, String marque, String modele, Integer nbPlaces, Double kilometrage) {
+	 public Vehicule(String immatriculation, String marque, String modele, Integer nbPlaces, int kilometrage, boolean enCirculation) {
 		super();
 		setImmatriculation(immatriculation);
 		setMarque(marque);
 		setModele(modele);
 		setNbPlaces(nbPlaces);
 		setKilometrage(kilometrage);
+		setEnCirculation(enCirculation);
 	}
 
 	public Integer getId() {
@@ -62,12 +63,21 @@ public class Vehicule {
 		this.nbPlaces = nbPlaces;
 	}
 
-	public Double getKilometrage() {
+	public int getKilometrage() {
 		return kilometrage;
 	}
 
-	public void setKilometrage(Double kilometrage) {
+	public void setKilometrage(int kilometrage) {
 		this.kilometrage = kilometrage;
 	}
+
+	public boolean isEnCirculation() {
+		return enCirculation;
+	}
+
+	public void setEnCirculation(boolean enCirculation) {
+		this.enCirculation = enCirculation;
+	}
   
+	
 }
