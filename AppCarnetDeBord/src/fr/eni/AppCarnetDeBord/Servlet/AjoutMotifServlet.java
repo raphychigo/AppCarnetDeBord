@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.AppCarnetDeBord.bo.Motif;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
+import fr.eni.AppCarnetDeBord.dal.DAOMotif;
 import fr.eni.AppCarnetDeBord.dal.DAOVehicule;
 
 /**
@@ -37,7 +39,9 @@ public class AjoutMotifServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ajoutMotif.jsp");
-		dispatcher.forward(request, response);
+		if(dispatcher!=null){
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

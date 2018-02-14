@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.AppCarnetDeBord.bo.Administrateur;
+import fr.eni.AppCarnetDeBord.bo.Conducteur;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 import fr.eni.AppCarnetDeBord.dal.DAOUtilisateur;
 import fr.eni.ecole.jeeproject.bo.Animateur;
@@ -65,8 +67,15 @@ public class LoginServlet extends HttpServlet {
 			    user =DAOUtilisateur.selectUser(request.getParameter("email"),request.getParameter("password"));			    
 			    if(user!=null){
 			    	session.setMaxInactiveInterval(600);
-			    	session.setAttribute("id", user.getId());
-			    	response.sendRedirect("/AppCarnetDeBord/Conducteur/");
+			    	if(user instanceof Administrateur){
+			    		session.setAttribute("id", ((Administrateur)user).getId());
+			    		response.sendRedirect("/AppCarnetDeBord/Administrateur/");
+			    	}
+			    	if(user instanceof Conducteur){
+			    		session.setAttribute("id", ((Conducteur)user).getId());
+			    		response.sendRedirect("/AppCarnetDeBord/Conducteur/");
+			    	}
+			    	
 			    }else{
 			    	request.getRequestDispatcher("/Login/ErreurConnexion").forward(request, response);
 			    }

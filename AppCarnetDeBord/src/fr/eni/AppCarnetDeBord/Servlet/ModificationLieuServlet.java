@@ -37,7 +37,16 @@ public class ModificationLieuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		
+		try {
+			Lieu lieu = DAOLieu.selectById(Integer.parseInt(request.getParameter("id")));
+			request.setAttribute("lieu", lieu);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("modifLieu.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -48,7 +57,7 @@ public class ModificationLieuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			DAOLieu.insert(new Lieu(request.getParameter("lieu")));
+			DAOLieu.update(new Lieu(request.getParameter("lieu")));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
