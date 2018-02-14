@@ -59,10 +59,24 @@
     color: white;
 }
 .bttannulation:hover{
-	background-color: #ce0606; /* red */
+	background-color: #a80303; /* red */
     color: white;
 }
+.id,
+.mdp {
+ 	margin:10px;
+}
 
+	/*  Page Utilisateur */
+.vue button{
+	margin:10px;
+	display:block;
+	padding:30px;
+}
+
+
+
+	/* Page Administrateur */
 
 
 
@@ -78,11 +92,26 @@
 }
 .section{
 	border:dashed 1px;
-	margin-left:7px;
 	text-align:center;
+	margin:7px 0px 7px 7px;
 }
 .section:hover{
 	background-color:#dbdbdb;
+}
+
+
+	/* Navigation utilisateur */
+	
+.modificationPerso{
+	margin-top:300px;;;
+}
+#deco{
+	background-color:#c9928b;
+	padding:10px;
+	color:white;
+}
+#deco:hover{
+	background-color:#991301;
 }
 
       /* footer */

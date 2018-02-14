@@ -27,7 +27,7 @@
 				<form method="POST" action="#">
 				
 				<div class="row">
-					 <label class="col-lg-10 id" for="id" >Identifiant</label>
+					 <label class="col-lg-10 id" for="id" >Identifiant :</label>
  					<input class="col-lg-10" name="id" type="text" placeholder="identifiant" id="id">
 
 				<label class="col-lg-10 mdp" for="mdp">Mot de passe :</label>
