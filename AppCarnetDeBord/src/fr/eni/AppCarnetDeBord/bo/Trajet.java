@@ -9,7 +9,7 @@ public class Trajet {
 	private GregorianCalendar dateFin;
 	private String commentaire;
 	private Motif motif;
-	private String lieuReception;
+	private Lieu lieuReception;
 	private String destination;
 	private Double kilometrageOrigine;
 	private Double kmParcourue;
@@ -22,7 +22,7 @@ public class Trajet {
 		super();
 	}
 
-	public Trajet(GregorianCalendar dateDebut, Motif motif, String commentaire, String lieuReception, String destination,
+	public Trajet(GregorianCalendar dateDebut, Motif motif, String commentaire, Lieu lieuReception, String destination,
 			Double kilometrageOrigine, Vehicule vehicule, Conducteur conducteur) {
 		super();
 		this.dateDebut = dateDebut;
@@ -61,11 +61,11 @@ public class Trajet {
 
 	
 
-	public String getLieuReception() {
+	public Lieu getLieuReception() {
 		return lieuReception;
 	}
 
-	public void setLieuReception(String lieuReception) {
+	public void setLieuReception(Lieu lieuReception) {
 		this.lieuReception = lieuReception;
 	}
 
