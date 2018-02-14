@@ -1,6 +1,8 @@
 
 package fr.eni.AppCarnetDeBord.bo;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Trajet {
 
@@ -17,14 +19,14 @@ public class Trajet {
 	private Lieu lieuReception;
 	private Lieu destination;
 	private Vehicule vehicule;
-	private Conducteur conducteur;
+	private List<Conducteur> conducteurs;
 
 	public Trajet() {
 		super();
 	}
 
 	public Trajet(GregorianCalendar dateDebut, Motif motif, String commentaire, Lieu lieuReception, Lieu destination,
-			Double kilometrageOrigine, Vehicule vehicule, Conducteur conducteur) {
+			Double kilometrageOrigine, Vehicule vehicule, List<Conducteur> conducteurs) {
 		super();
 		this.dateDebut = dateDebut;
 		this.commentaire = commentaire;
@@ -33,7 +35,7 @@ public class Trajet {
 		this.destination = destination;
 		this.kilometrageOrigine = kilometrageOrigine;
 		this.vehicule = vehicule;
-		this.conducteur = conducteur;
+		this.conducteurs = conducteurs;
 	}
 
 	public Integer getId() {
@@ -118,13 +120,7 @@ public class Trajet {
 		this.vehicule = vehicule;
 	}
 
-	public Conducteur getConducteur() {
-		return conducteur;
-	}
-
-	public void setConducteur(Conducteur conducteur) {
-		this.conducteur = conducteur;
-	}
+	
 
 	public String getCommentaire() {
 		return commentaire;
@@ -140,6 +136,22 @@ public class Trajet {
 
 	public void setMotif(Motif motif) {
 		this.motif = motif;
+	}
+
+	public Double getKilometrageFin() {
+		return kilometrageFin;
+	}
+
+	public void setKilometrageFin(Double kilometrageFin) {
+		this.kilometrageFin = kilometrageFin;
+	}
+
+	public List<Conducteur> getConducteurs() {
+		return conducteurs;
+	}
+
+	public void setConducteurs(List<Conducteur> conducteurs) {
+		this.conducteurs = conducteurs;
 	}
 
 }
