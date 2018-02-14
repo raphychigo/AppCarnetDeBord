@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.AppCarnetDeBord.bo.Motif;
+import fr.eni.AppCarnetDeBord.dal.DAOMotif;
+
 /**
  * Servlet implementation class SuppressionMotifServlet
  */
@@ -38,7 +41,7 @@ public class SuppressionMotifServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			DAOMotif.delete(new Motif(request.getParameter("motif")));
+			DAOMotif.delete(Integer.parseInt(request.getParameter("id")));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
