@@ -1,0 +1,104 @@
+@CHARSET "ISO-8859-1";
+
+
+     /* Header */
+.menu{
+	background-color:#C0C0C0;
+	text-align:center;
+	top:0px;
+	min-height:200px;
+	padding-top:120px;
+}
+.entete {
+	background-color:#033db8;
+	text-aligne:center;
+	min-height:200px;
+	color:white;
+	text-align:center;
+}
+
+
+	/*  Body all  */
+.ecran-modification{
+	padding:50px;
+}
+	/* Page index */
+.titre{
+	padding-top:50px;
+	margin:10px;
+}
+
+.introduction {
+	text-align:justify;
+	line-height:170%;
+	padding:20px;
+}
+	/*  Page Login */
+.id{
+	margin-bottom:10px;
+}
+.id input{
+	margin-bottom:20px;
+}
+	
+.bttvalidation,
+.bttannulation{
+	margin:15px;
+	padding:15px;
+	border-radius: 12px;
+	-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+.bttannulation {
+	padding-left:20px;
+	padding-right:20px;
+}
+.bttvalidation:hover
+{
+	background-color: #4CAF50; /* Green */
+    color: white;
+}
+.bttannulation:hover{
+	background-color: #ce0606; /* red */
+    color: white;
+}
+
+
+
+
+
+	/* Navigation left */
+
+.choix{
+	background-color:#C0C0C0;
+	position:relative;
+	top:0px;
+	min-height:600px;
+
+}
+.section{
+	border:dashed 1px;
+	margin-left:7px;
+	text-align:center;
+}
+.section:hover{
+	background-color:#dbdbdb;
+}
+
+      /* footer */
+#eleve {
+	position:absolute;
+	bottom:0px;
+	background-color:#C0C0C0;
+	min-height:80px;
+	padding:15px;
+}
+
+
+
+
+
+
+
+
+
