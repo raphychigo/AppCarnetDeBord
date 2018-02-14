@@ -1,6 +1,6 @@
 package fr.eni.AppCarnetDeBord.dal;
 
-public class DAOProjet implements DAO {
+public class DAOTrajet implements DAO {
 
 	
 }

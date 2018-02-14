@@ -7,6 +7,7 @@ public class Trajet {
 	private Integer id;
 	private GregorianCalendar dateDebut;
 	private GregorianCalendar dateFin;
+	private String commentaire;
 	private String nature;
 	private String lieuReception;
 	private String destination;
@@ -21,10 +22,11 @@ public class Trajet {
 		super();
 	}
 
-	public Trajet(GregorianCalendar dateDebut, String nature, String lieuReception, String destination,
+	public Trajet(GregorianCalendar dateDebut, String nature, String commentaire, String lieuReception, String destination,
 			Double kilometrageOrigine, Vehicule vehicule, Conducteur conducteur) {
 		super();
 		this.dateDebut = dateDebut;
+		this.commentaire = commentaire;
 		this.nature = nature;
 		this.lieuReception = lieuReception;
 		this.destination = destination;
@@ -127,6 +129,14 @@ public class Trajet {
 
 	public void setConducteur(Conducteur conducteur) {
 		this.conducteur = conducteur;
+	}
+
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
 	}
 
 }
