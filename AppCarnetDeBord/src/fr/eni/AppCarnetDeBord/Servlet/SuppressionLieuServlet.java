@@ -8,22 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import fr.eni.AppCarnetDeBord.bo.Vehicule;
 import fr.eni.AppCarnetDeBord.dal.DAOVehicule;
 
 /**
- * Servlet implementation class SuppressionVehiculeServlet
+ * Servlet implementation class SuppressionLieuServlet
  */
-@WebServlet("/Login/Administrateur/SuppressionVehicule")
-public class SuppressionVehiculeServlet extends HttpServlet {
+@WebServlet("/Login/Administrateur/Lieu/Suppression")
+public class SuppressionLieuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SuppressionVehiculeServlet() {
+    public SuppressionLieuServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,8 +39,6 @@ public class SuppressionVehiculeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		
 		try {
 			DAOVehicule.delete(Integer.parseInt(request.getParameter("id")));
 		} catch (NumberFormatException e) {
