@@ -68,20 +68,58 @@
 }
 
 	/*  Page Utilisateur */
-.vue button{
-	margin:10px;
-	display:block;
-	padding:30px;
-}
-
 
 
 
 	/* Page Administrateur */
+.vue button{
+	width:200px;
+	height:75px;
+	display:inline;
+	margin:50px;
+	background-color: #33A2FF;
+	 -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+	
+}
+.vue button:hover{
+	background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.vue button:nth-child(1){
+	margin-left:150px;
+}
+.vue button:nth-child(2){
+	margin-left:300px;
+}
+.vue button:nth-child(3){
+	margin-left:450px;
+}
+.vue button:nth-child(4){
+	margin-left:600px;
+}
 
 
+    /* Page Administrateur - Gestion véhicule*/
+.nouveau,
+.modifie,
+.supprimer{
+	width:200px;
+	height:50px;
+	display:block;
+	background-color: #33A2FF;
+}
+.choix-vehicule{
+	display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top : 50px;
+}
 
-
+   
+    
 	/* Navigation left */
 
 .choix{

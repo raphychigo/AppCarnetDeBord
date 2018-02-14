@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Page utilisateur</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 	
 <body>

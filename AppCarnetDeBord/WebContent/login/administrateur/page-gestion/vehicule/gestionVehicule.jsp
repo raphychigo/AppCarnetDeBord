@@ -2,30 +2,32 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Page gestion des vehicules</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
-	
-	<body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Page gestion des vehicules</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+</head>
 
-		<%@ include file="/element/admin/gestion/Vehic.jsp" %>
-
-			<div class="row">
+<body>
+	<%@ include file="/element/admin/gestion/Vehic.jsp" %>
+		<div class="row">	
+			<div class="col-sm-2 choix">
 				
-				<div class="col-sm-2" id="choix">
+				<div class="section"><a href="../../administrateur.jsp">Retour au tableau de bord</a></div>
+				<div class=""><a href="/index.jsp">Deconnexion</a></div>
 				
-					<a href="../../administrateur.jsp">Retour au tableau de bord</a>
-					<a href="/index.jsp">Deconnexion</a>
-				</div>
-				
-				<div class="col-sm-10" >
+			</div>			
+			<div class="col-sm-10" >
 					
 					<!-- Affichage des lieux en fonction de la base de donnée -->
+					
 					<form method="POST" action="#">
-					<select class="choix-vehicule">
+					<select class="choix-vehicule" size="6">
+						<option>Renault Megane</option>
+						<option>Peugeot 3008</option>
+						<option>Renault Megane</option>
+						<option>Peugeot 3008</option>
 						<option>Renault Megane</option>
 						<option>Peugeot 3008</option>
 					</select>
