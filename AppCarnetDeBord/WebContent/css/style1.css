@@ -15,12 +15,6 @@ header{
 	padding-top: 50px;
 }
 
-.formation{
-	width:100%;
-	border : 1px dashed #333333; 
-	margin-bottom:20px;
-}
-
 h3{
 	background-color: #4fd0f7;
 	font-size:25px;
@@ -59,10 +53,6 @@ label{
 }
 .input-centre{
 	width:100%;
-	margin-top:15px;
-}
-
-.connexion>label{
 	margin-top:15px;
 }
 

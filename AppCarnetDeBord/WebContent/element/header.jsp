@@ -9,14 +9,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Tableau De Bord</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style1.css">
 </head>
 
 <body>
 
 <header>
 	<div class="row" >
-		<div class="col-xs-12">
+		<div class="col-xs-12" id="title">
 			<h1>${titre}</h1>
 		</div>
 	</div>
