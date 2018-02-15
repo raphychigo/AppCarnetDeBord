@@ -35,11 +35,12 @@ public class AjoutConducteurServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ajotuConducteur.jsp");
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ajoutConducteur.jsp");
+		if(dispatcher!=null){
+			dispatcher.forward(request, response);
+		}
 		
 	}
 
@@ -47,14 +48,11 @@ public class AjoutConducteurServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
 			DAOUtilisateur.insert(new Conducteur(request.getParameter("immatriculation"),request.getParameter("marque")),request.getParameter("password"));
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher("/CarnetDeBord/Administrateur/Conducteur").forward(request, response);

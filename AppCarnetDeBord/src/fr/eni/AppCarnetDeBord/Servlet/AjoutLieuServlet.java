@@ -3,6 +3,7 @@ package fr.eni.AppCarnetDeBord.Servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +35,13 @@ public class AjoutLieuServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		HttpSession session = request.getSession();
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ajoutLieu.jsp");
+		if(dispatcher!=null){
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

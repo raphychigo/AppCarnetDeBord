@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import fr.eni.AppCarnetDeBord.bo.Lieu;
 
-public class DAOLieu implements DAO{
+public class DAOLieu implements DAO<Lieu>{
 
 	public static void insert(Lieu lieu) throws SQLException {
 		Connection cnx = null;

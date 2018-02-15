@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.AppCarnetDeBord.bo.Lieu;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
 import fr.eni.AppCarnetDeBord.dal.DAOVehicule;
 
@@ -37,7 +38,9 @@ public class AjoutVehiculeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ajoutVehicule.jsp");
-		dispatcher.forward(request, response);
+		if(dispatcher!=null){
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
@@ -48,7 +51,11 @@ public class AjoutVehiculeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try {
-			DAOVehicule.insert(new Vehicule(request.getParameter("immatriculation"),request.getParameter("marque"),request.getParameter("modele"),Integer.parseInt(request.getParameter("nbPlaces")),Integer.parseInt(request.getParameter("kilometrage")),Boolean.parseBoolean(request.getParameter("enCirculation"))));
+
+			Lieu lieu = new Lieu(request.getParameter("idLieu"));
+			lieu.setIdLieu(Integer.parseInt(request.getParameter("idLieu")));
+			DAOVehicule.insert(new Vehicule(request.getParameter("immatriculation"),request.getParameter("marque"),request.getParameter("modele"),Integer.parseInt(request.getParameter("nbPlaces")),Integer.parseInt(request.getParameter("kilometrage")),Boolean.parseBoolean(request.getParameter("enCirculation")),lieu));
+
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

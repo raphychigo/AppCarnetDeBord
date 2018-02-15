@@ -39,7 +39,9 @@ public class AjoutMotifServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("ajoutMotif.jsp");
-		dispatcher.forward(request, response);
+		if(dispatcher!=null){
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

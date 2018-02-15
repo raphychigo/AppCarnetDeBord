@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.AppCarnetDeBord.bo.Lieu;
+import fr.eni.AppCarnetDeBord.bo.Motif;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
+import fr.eni.AppCarnetDeBord.dal.DAOMotif;
 import fr.eni.AppCarnetDeBord.dal.DAOVehicule;
 
 /**
@@ -35,7 +38,16 @@ public class ModificationVehiculeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		
+		try {
+			Vehicule vehicule = DAOVehicule.selectById(Integer.parseInt(request.getParameter("id")));
+			request.setAttribute("vehicule", vehicule);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("modifVehicule.jsp");
 		dispatcher.forward(request, response);
 		
@@ -49,7 +61,9 @@ public class ModificationVehiculeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try {
-			DAOVehicule.update(new Vehicule(request.getParameter("immatriculation"),request.getParameter("marque"),request.getParameter("modele"),Integer.parseInt(request.getParameter("nbPlaces")),Integer.parseInt(request.getParameter("kilometrage")),Boolean.parseBoolean(request.getParameter("enCirculation"))));
+			Lieu lieu = new Lieu(request.getParameter("idLieu"));
+			lieu.setIdLieu(Integer.parseInt(request.getParameter("idLieu")));
+			DAOVehicule.update(new Vehicule(request.getParameter("immatriculation"),request.getParameter("marque"),request.getParameter("modele"),Integer.parseInt(request.getParameter("nbPlaces")),Integer.parseInt(request.getParameter("kilometrage")),Boolean.parseBoolean(request.getParameter("enCirculation")),lieu));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -13,7 +13,7 @@ import fr.eni.AppCarnetDeBord.bo.Lieu;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
 
-public class DAOVehicule implements DAO{
+public class DAOVehicule implements DAO<Vehicule>{
 	
 	public static void insert(Vehicule vehicule) throws SQLException {
 		Connection cnx = null;
@@ -26,7 +26,7 @@ public class DAOVehicule implements DAO{
 				rqt.setString(1, vehicule.getImmatriculation());
 				rqt.setString(2, vehicule.getMarque());
 				rqt.setString(3, vehicule.getModele());
-				rqt.setInt(4, vehicule.getKilometrage());
+				rqt.setDouble(4, vehicule.getKilometrage());
 				rqt.setInt(5, vehicule.getNbPlaces());
 				rqt.setBoolean(6, vehicule.isEnCirculation());
 				rqt.setInt(5, vehicule.getLocalisation().getIdLieu());
@@ -160,9 +160,10 @@ public class DAOVehicule implements DAO{
 				rqt.setString(1, vehicule.getImmatriculation());
 				rqt.setString(2, vehicule.getMarque());
 				rqt.setString(3, vehicule.getModele());
-				rqt.setInt(4, vehicule.getKilometrage());
+				rqt.setDouble(4, vehicule.getKilometrage());
 				rqt.setInt(5, vehicule.getNbPlaces());
-				rqt.setInt(6, vehicule.getLocalisation().getIdLieu());
+				rqt.setBoolean(6, vehicule.isEnCirculation());
+				rqt.setInt(7, vehicule.getLocalisation().getIdLieu());
 
 			rqt.executeUpdate();
 
