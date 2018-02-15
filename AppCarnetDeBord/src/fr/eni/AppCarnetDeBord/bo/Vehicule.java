@@ -6,7 +6,7 @@ public class Vehicule {
 	 private String immatriculation;
 	 private String marque;
 	 private String modele;
-	 private int kilometrage;
+	 private double kilometrage;
 	 private Integer nbPlaces;	 
 	 private boolean enCirculation;
 	 private Lieu localisation;
@@ -15,7 +15,7 @@ public class Vehicule {
 		 super();
 	 }
 	 
-	 public Vehicule(String immatriculation, String marque, String modele, int kilometrage, Integer nbPlaces, boolean enCirculation, Lieu localisation) {
+	 public Vehicule(String immatriculation, String marque, String modele, double kilometrage, Integer nbPlaces, boolean enCirculation, Lieu localisation) {
 		super();
 		setImmatriculation(immatriculation);
 		setMarque(marque);
@@ -66,11 +66,11 @@ public class Vehicule {
 		this.nbPlaces = nbPlaces;
 	}
 
-	public int getKilometrage() {
+	public double getKilometrage() {
 		return kilometrage;
 	}
 
-	public void setKilometrage(int kilometrage) {
+	public void setKilometrage(double kilometrage) {
 		this.kilometrage = kilometrage;
 	}
 

@@ -48,7 +48,7 @@ public class AjoutVehiculeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try {
-			DAOVehicule.insert(new Vehicule(request.getParameter("immatriculation"),request.getParameter("marque"),request.getParameter("modele"),Integer.parseInt(request.getParameter("nbPlaces")),Integer.parseInt(request.getParameter("kilometrage")),Boolean.parseBoolean(request.getParameter("enCirculation"))));
+			DAOVehicule.insert(new Vehicule(request.getParameter("immatriculation"),request.getParameter("marque"),request.getParameter("modele"),Integer.parseInt(request.getParameter("nbPlaces")),request.getParameter("kilometrage"),Boolean.parseBoolean(request.getParameter("enCirculation"))));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
