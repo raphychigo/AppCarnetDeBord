@@ -16,7 +16,7 @@ import fr.eni.AppCarnetDeBord.bo.Motif;
 import fr.eni.AppCarnetDeBord.bo.Trajet;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
 
-public class DAOTrajet implements DAO<Trajet> {
+public class DAOTrajet2 implements DAO<Trajet> {
 
 	
 	

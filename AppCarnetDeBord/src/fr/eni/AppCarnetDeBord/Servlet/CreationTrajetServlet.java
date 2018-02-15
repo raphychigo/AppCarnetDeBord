@@ -3,6 +3,7 @@ package fr.eni.AppCarnetDeBord.Servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -80,13 +81,18 @@ public class CreationTrajetServlet extends HttpServlet {
 			Conducteur conducteur = new Conducteur();
 			conducteur = (Conducteur) DAOUtilisateur.selectById(Integer.parseInt(session.getAttribute("id").toString()));
 			
-			Trajet trajet = new Trajet(gcDebut,motif,request.getParameter("commentaire"),lieuReception,lieuDestination,vehicule.getKilometrage(),vehicule,conducteur);
+			ArrayList listConducteurs = new ArrayList<>();
+			
+			Trajet trajet = new Trajet(gcDebut,motif,request.getParameter("commentaire"),lieuReception,lieuDestination,vehicule.getKilometrage(),vehicule,listConducteurs);
 		
 			DAOTrajet.insert(trajet);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} catch (Exception e){
 			// TODO: handle exception
 			e.printStackTrace();
 		}

@@ -14,8 +14,7 @@ import fr.eni.AppCarnetDeBord.bo.Administrateur;
 import fr.eni.AppCarnetDeBord.bo.Conducteur;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 import fr.eni.AppCarnetDeBord.dal.DAOUtilisateur;
-import fr.eni.ecole.jeeproject.bo.Animateur;
-import fr.eni.ecole.jeeproject.dal.AnimateurDAO;
+
 
 /**
  * Servlet implementation class LoginServlet

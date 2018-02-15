@@ -13,7 +13,7 @@ import fr.eni.AppCarnetDeBord.bo.Lieu;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
 
-public class DAOVehicule implements DAO{
+public class DAOVehicule implements DAO<Vehicule>{
 	
 	public static void insert(Vehicule vehicule) throws SQLException {
 		Connection cnx = null;

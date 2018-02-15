@@ -16,7 +16,7 @@ import fr.eni.AppCarnetDeBord.bo.Administrateur;
 import fr.eni.AppCarnetDeBord.bo.Conducteur;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 
-public class DAOUtilisateur implements DAO {
+public class DAOUtilisateur implements DAO<Utilisateur> {
 	
 	private final static String  ADMIN = "Administrateur";
 	private final static String  CONDUCTEUR = "Conducteur";
