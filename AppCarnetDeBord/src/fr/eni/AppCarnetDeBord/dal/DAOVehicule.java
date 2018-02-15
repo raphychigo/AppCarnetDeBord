@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.AppCarnetDeBord.bo.Administrateur;
 import fr.eni.AppCarnetDeBord.bo.Conducteur;
@@ -190,19 +191,36 @@ public class DAOVehicule implements DAO<Vehicule>{
 		ArrayList<Vehicule> lv = new ArrayList<>();
 		try {
 			cnx = AccesBase.getConnection();
-			String select = "select immatriculation,marque,modele,places,kilometrage,enCirculation,idLieu,nomLieu from Vehicules inner join Lieux on Vehicules.idLieu = Lieu.idLieu where idLieu = ?";
+			String select ="select idVehicule from Trajets where finTrajet IS NULL";
+			Statement rqt1 = cnx.createStatement();
+			ResultSet res1 = rqt1.executeQuery(select);
+			List<Integer> idVehiculesNonDispos = new ArrayList<>();
+			while(res1.next()){
+				idVehiculesNonDispos.add(res1.getInt("idVehicule"));
+			}
+			
+			select = "select idVehicule,immatriculation,marque,modele,places,kilometrage,enCirculation,idLieu,nomLieu from Vehicules inner join Lieux on Vehicules.idLieu = Lieu.idLieu where idLieu = ?";
 			PreparedStatement rqt = cnx.prepareStatement(select);
 			rqt.setInt(1, idLieu);
 			ResultSet res = rqt.executeQuery();
 			if(res.next()){
 				while (res.next()) {
-					Lieu lieu = new Lieu(res.getString("nomLieu"));
-					lieu.setIdLieu(res.getInt("idLieu"));
-					Vehicule vehicule = new Vehicule(res.getString("immatriculation"), res.getString("marque"), res.getString("modele"), res.getInt("places"), res.getInt("kilometrage"), res.getBoolean("enCirculation"), lieu);
-					vehicule.setId(res.getInt("idVehicule"));
-					lv.add(vehicule);
-	
-			}
+					boolean dispo = true;
+					for (Integer integer : idVehiculesNonDispos) {
+						if(res.getInt("idVehicules")==integer){
+							dispo = false;
+						}
+					}
+					if(dispo){
+						Lieu lieu = new Lieu(res.getString("nomLieu"));
+						lieu.setIdLieu(res.getInt("idLieu"));
+						Vehicule vehicule = new Vehicule(res.getString("immatriculation"), res.getString("marque"), res.getString("modele"), res.getInt("places"), res.getInt("kilometrage"), res.getBoolean("enCirculation"), lieu);
+						vehicule.setId(res.getInt("idVehicule"));
+						lv.add(vehicule);
+		
+					}
+					
+				}
 			}
 			
 		} catch (SQLException e) {

@@ -14,6 +14,7 @@ import fr.eni.AppCarnetDeBord.bo.Conducteur;
 import fr.eni.AppCarnetDeBord.bo.Lieu;
 import fr.eni.AppCarnetDeBord.bo.Motif;
 import fr.eni.AppCarnetDeBord.bo.Trajet;
+import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 import fr.eni.AppCarnetDeBord.bo.Vehicule;
 
 public class DAOTrajet implements DAO<Trajet> {
@@ -62,7 +63,97 @@ public class DAOTrajet implements DAO<Trajet> {
 
 	}
 	
+	public static ArrayList<Trajet> selectAll()  throws SQLException  {
+		Connection cnx = null;
+		ArrayList<Trajet> listeTrajets = new ArrayList<>();
+		try {
+			cnx = AccesBase.getConnection();
+			String select = "select idTrajet from Trajets";
+			Statement rqt = cnx.createStatement();
+			ResultSet res = rqt.executeQuery(select);
+			while(res.next()){
+				int id = res.getInt("idTrajet");
+				Trajet unTrajet = selectById(id);
+				listeTrajets.add(unTrajet);
+			}
+		}
+		catch (SQLException e ) {
+			e.printStackTrace();
+		}
+		finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return listeTrajets;		
+	}
 	
+	public static ArrayList<Trajet> selectTrajetsByIdVehicule(int id)  throws SQLException  {
+		Connection cnx = null;
+		ArrayList<Trajet> listeTrajets = new ArrayList<>();
+		try {
+			cnx = AccesBase.getConnection();
+			String select = "select idTrajet from Trajets where Trajets.idVehicule= ?";
+			PreparedStatement rqt = cnx.prepareStatement(select);
+			rqt.setInt(1, id);
+			ResultSet res = rqt.executeQuery();
+			while(res.next()){
+				int idTrajet = res.getInt("idTrajet");
+				Trajet unTrajet = selectById(idTrajet);
+				listeTrajets.add(unTrajet);
+			}
+		}
+		catch (SQLException e ) {
+			e.printStackTrace();
+		}
+		finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return listeTrajets;		
+	}
+	
+	public static ArrayList<Trajet> selectTrajetsByIdMotif(int id)  throws SQLException  {
+		Connection cnx = null;
+		ArrayList<Trajet> listeTrajets = new ArrayList<>();
+		try {
+			cnx = AccesBase.getConnection();
+			String select = "select idTrajet from Trajets where Trajets.idMotif= ?";
+			PreparedStatement rqt = cnx.prepareStatement(select);
+			rqt.setInt(1, id);
+			ResultSet res = rqt.executeQuery();
+			while(res.next()){
+				int idTrajet = res.getInt("idTrajet");
+				Trajet unTrajet = selectById(idTrajet);
+				listeTrajets.add(unTrajet);
+			}
+		}
+		catch (SQLException e ) {
+			e.printStackTrace();
+		}
+		finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return listeTrajets;		
+	}
 	
 	public static Trajet selectById(int id) throws SQLException {
 		Connection cnx = null;
@@ -185,7 +276,6 @@ public class DAOTrajet implements DAO<Trajet> {
 				}
 			}
 		}
-
 	}
 	
 	public static void delete(int id) throws SQLException{
