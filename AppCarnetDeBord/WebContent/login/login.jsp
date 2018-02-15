@@ -9,7 +9,7 @@
 				<form method="POST" action="#">		
 				
 				<label class="id" for="id" >Identifiant :</label>
- 					<input name="id" type="text" placeholder="identifiant">
+ 					<input name="identifiant" type="text" placeholder="identifiant">
 
 				<label class="mdp" for="mdp">Mot de passe :</label>
  					<input  name="password" type="password" placeholder="password">

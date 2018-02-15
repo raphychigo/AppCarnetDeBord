@@ -3,6 +3,7 @@ package fr.eni.AppCarnetDeBord.Servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +15,13 @@ import fr.eni.AppCarnetDeBord.bo.Administrateur;
 import fr.eni.AppCarnetDeBord.bo.Conducteur;
 import fr.eni.AppCarnetDeBord.bo.Utilisateur;
 import fr.eni.AppCarnetDeBord.dal.DAOUtilisateur;
+import fr.eni.ecole.jeeproject.servlet.Servlet;
 
 
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/Login")
+//@WebServlet("/AppCarnetDeBord/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,8 +29,24 @@ public class LoginServlet extends HttpServlet {
      * Default constructor. 
      */
     public LoginServlet() {
+    	super();
         // TODO Auto-generated constructor stub
     }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		//ServletConfig permettant de charger des paramètres de configuration propres à la servlet
+		super.init(config);
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		super.destroy();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -63,16 +81,16 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("/AppCarnetDeBord/Conducteur");
 			}else{
 				Utilisateur user =  null;
-			    user =DAOUtilisateur.selectUser(request.getParameter("email"),request.getParameter("password"));			    
+			    user =DAOUtilisateur.selectUser(request.getParameter("identifiant"),request.getParameter("password"));			    
 			    if(user!=null){
 			    	session.setMaxInactiveInterval(600);
 			    	if(user instanceof Administrateur){
 			    		session.setAttribute("id", ((Administrateur)user).getId());
-			    		response.sendRedirect("/AppCarnetDeBord/Administrateur/");
+			    		response.sendRedirect("/AppCarnetDeBord/Administrateur");
 			    	}
 			    	if(user instanceof Conducteur){
 			    		session.setAttribute("id", ((Conducteur)user).getId());
-			    		response.sendRedirect("/AppCarnetDeBord/Conducteur/");
+			    		response.sendRedirect("/AppCarnetDeBord/Conducteur");
 			    	}
 			    	
 			    }else{
