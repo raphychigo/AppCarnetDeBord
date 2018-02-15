@@ -24,14 +24,15 @@ public class DAOTrajet implements DAO<Trajet> {
 		Connection cnx = null;
 		try {
 			cnx = AccesBase.getConnection();
-			String insert = "insert into Trajet(debutTrajet,commentaire,kilometrageDepart,idLieuDepart,idVehicule) " + "values(?,?,?,?,?);";
+			String insert = "insert into Trajet(debutTrajet,commentaire,kilometrageDepart,idLieuDepart,idVehicule,idDestination) " + "values(?,?,?,?,?,?);";
 			PreparedStatement rqt = cnx.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
 			
 				rqt.setDate(1, new Date(unTrajet.getDateDebut().getTimeInMillis()));
 				rqt.setString(2, unTrajet.getCommentaire());
 				rqt.setDouble(3, unTrajet.getKilometrageOrigine());
 				rqt.setInt(4, unTrajet.getLieuReception().getIdLieu());
-				rqt.setInt(5, unTrajet.getDestination().getIdLieu());
+				rqt.setInt(5, unTrajet.getVehicule().getId());
+				rqt.setInt(6, unTrajet.getDestination().getIdLieu());
 			rqt.executeUpdate();
 			ResultSet key = rqt.getGeneratedKeys();
 			key.next();
@@ -93,6 +94,22 @@ public class DAOTrajet implements DAO<Trajet> {
 				lieuReception.setIdLieu(res.getInt("idLieu"));
 				lieuReception.setNomLieu(res.getString("nomLieu"));
 			}
+			
+			//Récupération des conducteurs
+			Conducteur unConducteur = new Conducteur();
+			select = "select * from Utilisateurs inner join Effectuer on Utilisateurs.idUtilisateurs=Effectuer.idUtilisateur "
+												+ "inner join Trajets on Effectuer.idTrajet=Trajets.idTrajet "
+												+ "where Trejats.idTrajet= ?";
+			rqt = cnx.prepareStatement(select);
+			rqt.setInt(1, id);
+			res = rqt.executeQuery();
+			while (res.next()) {
+				unConducteur.setId(res.getInt("Effectuer.idUtilisateur"));
+				unConducteur.setNom(res.getString("Utilisateurs.nomUtilisateur"));
+				unConducteur.setPrenom(res.getString("Utilisateurs.prenomUtilisateur"));
+				unConducteur.setLogin(res.getString("Utilisateurs.codeUtilisateur"));
+				conducteurs.add(unConducteur);
+			}
 
 			select = "select * from Trajets " + "inner join Motifs on Trajets.idMotif = Motifs.idMotif "
 					+ "inner join Vehicules on Trajets.idVehicule = Vehicules.idVehicule "
@@ -123,6 +140,10 @@ public class DAOTrajet implements DAO<Trajet> {
 				vehiculeTrajet.setEnCirculation(res.getBoolean("enCirculation"));
 				vehiculeTrajet.setLocalisation(lieuReception);
 				leTrajet.setVehicule(vehiculeTrajet);
+				// Récupération des lieux de reception et destination
+				leTrajet.setLieuReception(lieuReception);
+				leTrajet.setDestination(lieuDestination);
+				leTrajet.setConducteurs(conducteurs);
 			}
 
 		} catch (SQLException e) {
