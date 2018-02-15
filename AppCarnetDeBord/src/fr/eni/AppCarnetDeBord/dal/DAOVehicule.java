@@ -26,7 +26,7 @@ public class DAOVehicule implements DAO{
 				rqt.setString(1, vehicule.getImmatriculation());
 				rqt.setString(2, vehicule.getMarque());
 				rqt.setString(3, vehicule.getModele());
-				rqt.setInt(4, vehicule.getKilometrage());
+				rqt.setDouble(4, vehicule.getKilometrage());
 				rqt.setInt(5, vehicule.getNbPlaces());
 				rqt.setBoolean(6, vehicule.isEnCirculation());
 				rqt.setInt(5, vehicule.getLocalisation().getIdLieu());
@@ -160,7 +160,7 @@ public class DAOVehicule implements DAO{
 				rqt.setString(1, vehicule.getImmatriculation());
 				rqt.setString(2, vehicule.getMarque());
 				rqt.setString(3, vehicule.getModele());
-				rqt.setInt(4, vehicule.getKilometrage());
+				rqt.setDouble(4, vehicule.getKilometrage());
 				rqt.setInt(5, vehicule.getNbPlaces());
 				rqt.setInt(6, vehicule.getLocalisation().getIdLieu());
 
