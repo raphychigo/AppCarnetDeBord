@@ -6,20 +6,23 @@
 				
 				<form method="POST" action="#">
 				
-					<label for="old-pass">Ancien mot de passe</label>
-					<input name="old-pass" type="text" placeholder="old-password" id="old-pass">
-					<label for="new-pass">Nouveau mot de passe</label>
-					<input name="new-pass" type="text" placeholder="new-password" id="new-pass">
-					<label for="second-new-pass">Second saisie du mot de passe</label>
-					<input name="second-new-pass" type="text" placeholder="second-new-password" id="second-new-pass">
+					<label class="old-pass"for="old-pass">Ancien mot de passe</label>
+						<input name="old-pass" type="text" placeholder="old-password">
+					<label class="new-pass"for="new-pass">Nouveau mot de passe</label>
+						<input name="new-pass" type="text" placeholder="new-password">
+					<label class="second-new-pass" for="second-new-pass">Second saisie du mot de passe</label>
+						<input name="second-new-pass" type="text" placeholder="second-new-password">
 				
-					<label for="nom">Nom :</label>
-					<input name="nom" type="text" placeholder="nom" id="nom">
-					<label for="prenom">Prenom :</label>
-					<input name="prenom" type="text" placeholder="Prenom" id="prenom">
-								
+					<label class="nom"for="nom">Nom :</label>
+						<input name="nom" type="text" placeholder="nom">
+					<label class="prenom" for="prenom">Prenom :</label>
+						<input name="prenom" type="text" placeholder="Prenom">
+					
+					<div class="control">
 					<button class="valider">Valider</button>
 					<button class="annuler">Annuler</button>
+					</div>			
+					
 					</form>
 
 			</section>

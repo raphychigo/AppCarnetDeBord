@@ -17,8 +17,11 @@
 					<label for="nb-place">Nombre de place :</label>
 					<input name="nb-place" type="text" placeholder="nb-place" id="nb-place">
 					
+					<div class="control">
 					<button class="valider">Valider</button>
 					<button class="annuler">Annuler</button>
+					</div>
+					
 					
 					</form>
 					</div>					

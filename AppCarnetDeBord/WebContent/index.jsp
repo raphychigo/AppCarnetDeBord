@@ -1,5 +1,5 @@
 <%@ include file="/element/header.jsp" %>
-<div class="container">
+	<div class="container">
 		<section class="row">
 			<%@ include file="/element/menu.jsp" %>
 			<section class="col-xs-9">
@@ -16,5 +16,5 @@
 			</section>
 			
 		</section>
-</div>
+	</div>
 <%@ include file="/element/footer.jsp" %>

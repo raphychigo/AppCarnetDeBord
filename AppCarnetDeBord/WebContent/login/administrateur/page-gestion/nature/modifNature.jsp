@@ -9,8 +9,12 @@
 					<label for="motif">Motif</label>
 					<input name="motif" type="text" placeholder="motif" id="motif">
 					
+					
+					<div class="control">
 					<button class="valider">Valider</button>
 					<button class="annuler">Annuler</button>
+					</div>
+					
 					</form>
 					</div>					
 			

@@ -1,26 +1,15 @@
+   /* General */   
 body{
 	width:100%;
 	margin:0 0 0 0;
 	position:absolute;
 	top:0;
-}
-
-header{
-	
-	top:0;
-	width:100%;
-	height:200px;
-	background-color:#dddddd;
-	text-align:center;
-	padding-top: 50px;
-}
-
+}     
 h3{
 	background-color: #4fd0f7;
 	font-size:25px;
 	color:#ffffff;
 }
-
 h1{
 	font-size: 50px;
 	margin-top : 0px;
@@ -45,27 +34,259 @@ a{
 }
 
 input{
-
-	margin-top :30px;
+	margin:5px;
+	width: 75%;
 }
 label{
 	display:block;
+	margin-top:10px;
 }
+
+
 .input-centre{
 	width:100%;
 	margin-top:15px;
 }
 
 button{
-
+	height:50px;
+	whidht:100px;
 	margin-top: 10px;
 }
 a:hover{
 	font-color : #3333ff;
 
 }
+         
+       /* Header */
+header{
+	
+	top:0;
+	width:100%;
+	height:200px;
+	background-color:#033db8;
+	text-align:center;
+	padding-top: 50px;
+}
 
+.entete{
+	color:white;
+}
+
+     /*  Menu     */
+
+aside{
+	background-color:#C0C0C0;
+	float:left;
+	min-height:600px;
+	border:solid;
+}
+
+	/*  Footer  */
+	
 footer{
-	margin-top:50px;
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	background-color:#C0C0C0;
+	min-height:80px;
+	padding:15px;
 	text-align:center;
 }
+
+
+/* Page Connexion */
+
+.mdp,
+.id{
+	margin-top:10px;
+}
+.mdp + input,
+.id + input{
+	margin:5px;
+	width: 75%;
+}
+.bttvalidation,
+.bttannulation{
+	margin:15px;
+	height:50px;
+	whidht:75px;
+	border-radius: 12px;
+	-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+.bttannulation {
+	padding-left:20px;
+	padding-right:20px;
+}
+.bttvalidation:hover
+{
+	background-color: #4CAF50; /* Green */
+    color: white;
+}
+.bttannulation:hover{
+	background-color: #a80303; /* red */
+    color: white;
+}
+
+/*info Personnel */	
+
+.old-pass,
+.new-pass,
+.second-new-pass,
+.nom,
+.prenom{
+	margin-top:10px;
+}
+.nom{
+	margin-top:50px;
+}
+
+.control{
+	margin-top:50px;
+	margin-left:50px;
+}
+.valider,
+.annuler{
+	
+	-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    height:50px;
+	whidht:75px;
+    border-radius: 12px;
+	 height:50px;
+	whidht:100px;
+	margin:15px;
+}
+
+.valider:hover
+{
+	background-color: #4CAF50; /* Green */
+    color: white;
+}
+.annuler:hover{
+	background-color: #a80303; /* red */
+    color: white;
+}
+
+/*   Page utilisateur   */
+
+/* cloture*/
+
+.tableau-actif * th,
+.tableau-actif * td{
+	border:solid 0.5px;
+	text-align:center;
+}
+.tableau-actif * th{
+	background:#033db8;
+	color:white;
+}
+table{
+	width: 100%;
+}
+.cloturer{
+	-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    height:50px;
+	whidht:75px;
+    border-radius: 12px;
+	 height:50px;
+	whidht:100px;
+	margin:15px;
+}
+.cloturer:hover
+{
+	background-color: #1E90FF; /* Green */
+    color: white;
+}
+
+/* nouveau */
+
+.liste-select{
+	margin-top:15px;
+}
+.ville,
+.vehicule,
+.motif{
+	margin-left:50px;
+}
+
+/* administrateur */
+
+.bouton-graphique button{
+	width:200px;
+	height:75px;
+	display:block;
+	background-color: #033db8;
+	 -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    color:white;
+    margin-top:50px;
+	
+}
+.bouton-graphique button:hover{
+	background-color: #33A2FF; 
+    color: white;
+}
+
+.bouton-graphique button:nth-child(1){
+	margin-left:100px;
+}
+.bouton-graphique button:nth-child(2){
+	margin-left:200px;
+}
+.bouton-graphique button:nth-child(3){
+	margin-left:300px;
+}
+.bouton-graphique button:nth-child(4){
+	margin-left:400px;
+}
+/* page gestion admin  */
+
+/*     vehicule         */
+.modifie,
+.supprimer,
+.nouveau{
+	
+	-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    height:50px;
+	whidht:75px;
+    border-radius: 12px;
+	margin:15px;
+}
+
+.modifie:hover
+{
+	background-color: #4CAF50; /* Green */
+    color: white;
+}
+.supprimer:hover{
+	background-color: #a80303; /* red */
+    color: white;
+}
+.choix{
+	margin-top:20px;
+	margin-left:80px;
+}
+.nouveau{
+	height:50px;
+	whidht:100px;
+	margin-left:50px;
+}
+.nouveau:hover{
+	color:white;
+	background-color:#33A2FF;
+}
+
+/* modif perso   */
+
+.type{
+	margin-top:20px;
+}
+
+
+
+

@@ -4,12 +4,16 @@
 			<%@ include file="/element/menu.jsp" %>
 			<section class="col-xs-9 ">
 				
+				<div class="bouton-graphique">
 				<form method="POST" action="#">
 				<button>Vue sur 12 mois</button>
 				<button>Vue par consommation/utilisateur</button>
 				<button>Vue par nature de déplacement</button>
 				<button>Vue par utilisation d'un véhicule</button>
 				</form>
+				
+				</div>
+				
 
 			</section>
 			

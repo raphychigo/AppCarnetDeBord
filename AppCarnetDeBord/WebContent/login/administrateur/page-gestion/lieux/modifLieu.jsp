@@ -8,8 +8,11 @@
 					<label for="lieu">Lieu</label>
 					<input name="lieu" type="text" placeholder="lieu" id="lieu">
 
+					<div class="control">
 					<button class="valider">Valider</button>
 					<button class="annuler">Annuler</button>
+					</div>
+					
 					</form>
 										
 			

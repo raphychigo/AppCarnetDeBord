@@ -5,7 +5,7 @@
 			<section class="col-xs-9 ">
 				
 				<!--  si l'utilisteur à un vehicule en cours d'usage -->
-				
+			<div class="tableau-actif">
 			<form method="POST" action="#">
 					<table>
    						<caption>Votre véhicule :</caption>
@@ -26,8 +26,9 @@
     			   		<td>150000</td>
   					 </tr>
   				 </table>
-  				 <button class="cloturer">Cloturer</button>
 			</form>
+			</div>	
+			
 					
 			</section>
 			

@@ -6,17 +6,25 @@
 					
 					<!-- Affichage des lieux en fonction de la base de donnée -->
 					<form method="POST" action="/ajout-modif-lieu.jsp">
-					<select>
-						<option class=""></option>
+					<select class="type" size="4">
+						<option class="">fzergzq</option>
+						<option class="">fzergzq</option>
+						<option class="">fzergzq</option>
 					</select>
+					<div class="control">
 					<button class="modifie">Modifier</button>
 					<button class="supprimer">Supprimer</button>
+					</div>
+					
 					</form>
-					<div class="nouveau">
+					
 					<form method="POST" action="/ajout-modif-lieu.jsp">
+					<div class="control">
 					<button class="nouveau">Nouveau lieu</button>
+					</div>
+					
 					</form>
-					</div>					
+									
 			
 
 			</section>

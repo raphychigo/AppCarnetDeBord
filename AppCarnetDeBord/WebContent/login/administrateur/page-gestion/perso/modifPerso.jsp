@@ -10,14 +10,19 @@
 					<input name="nom" type="text" placeholder="nom" id="nom">
 					<label for="prenom">Prenom :</label>
 					<input name="prenom" type="text" placeholder="Prenom" id="prenom">
-					<select name="type">
+					<div>
+					<select class="type"name="type">
 						<option>Administrateur</option>
 						<option>Utilisateur</option>
 					</select>
+					</div>
 					
 					
+					<div class="control">
 					<button class="valider">Valider</button>
 					<button class="annuler">Annuler</button>
+					</div>
+
 					</form>
 					</div>					
 			

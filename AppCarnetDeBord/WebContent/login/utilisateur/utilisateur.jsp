@@ -6,7 +6,7 @@
 		
 				
 				<!--  si l'utilisteur à un vehicule en cours d'usage -->
-				
+			<div class="tableau-actif">
 			<form method="POST" action="#">
 					<table>
    						<caption>Votre véhicule :</caption>
@@ -23,37 +23,46 @@
   				 </table>
   				 <button class="cloturer">Cloturer</button>
 			</form>
+			
+			
+			</div>	
+			
 				<!-- sinon l'utilisateur crée un usage -->
+			<div class="nouvelle-enregistrement">				
+				<form method="POST" action="#">
 				
-			<form method="POST" action="#">
-				<label for="debut">Date début :</label>
-					<input name="debut" type="text" placeholder="date debut d'usage" id="debut">
-				<label for="km/debut">Kilometrage debut :</label>
-					<input name="km/debut" type="text" placeholder="km/debut" id="km/debut">
-				<label for="commentaire">Commentaire</label>
-					<input name="commentaire" type="text" placeholder="commentaire" id="commentaire">
-				<SELECT name="lieualler" size="1">
+				<label class="debut" for="debut">Date début :</label>
+					<input name="debut" type="text" placeholder="date debut d'usage">
+				<label class="km/debut" for="km/debut">Kilometrage debut :</label>
+					<input name="km/debut" type="text" placeholder="km/debut">
+				<label class="commentaire" for="commentaire">Commentaire</label>
+					<input name="commentaire" type="text" placeholder="commentaire">
+				<div class="liste-select">
+					<SELECT class="ville" name="lieualler" size="4">
 					<OPTION>Nantes
 					<OPTION>Rennes
 				</SELECT>
-				<SELECT name="voiture" size="1">
+				<SELECT class="vehicule"name="voiture" size="4">
 					<OPTION>Megane
 					<OPTION>3008
 				</SELECT>
-				<SELECT name="motif" size="1">
+				<SELECT class="motif" name="motif" size="4">
 					<OPTION>Reunion
 					<OPTION>Formation
 				</SELECT>
-
+				
+				<div class="control">
 				<button class="valider">Valider</button>
 				<button class="annuler">Annuler</button>
-					
-			</form>
 				
-				
-				
-			</section>
+				</div>
 			
+				</div>
+						
+			</form>
+			</div>	
+		
+			</section>		
 		</section>
 </div>
 <%@ include file="/element/footer.jsp" %>

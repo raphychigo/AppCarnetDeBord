@@ -21,9 +21,12 @@
 					
 				<label for="volumeCarb">Volume Carburant</label>
 					<input name="volumeCarb" type="text" placeholder="volumeCarb" id="volumeCarb">
-					
+				
+				<div class="control">
 				<button class="valider">Valider</button>
 				<button class="annuler">Annuler</button>
+				</div>	
+				
 
 			</form>
 					
