@@ -83,17 +83,19 @@ public class DAOUtilisateur implements DAO<Utilisateur> {
 			
 
 			cnx = AccesBase.getConnection();
-			String select = "select idUtilisateur,nomUtilisateur,prenomUtilisateur from Utilisateurs";
+			String select = "select idUtilisateur,nomUtilisateur,prenomUtilisateur,codeUtilisateur from Utilisateurs";
 			Statement rqt = cnx.createStatement();
 			ResultSet res = rqt.executeQuery(select);
 			while (res.next()) {
 				if(res.getString("typeUtilisateur").trim().equals(ADMIN)){
 					Administrateur u = new Administrateur(res.getString("nom"), res.getString("prenom"));
 					u.setId(res.getInt("idUtilisateur"));
+					u.setLogin(res.getString("codeUtilisateur"));
 					lu.add(u);
 				}
 				if(res.getString("typeUtilisateur").trim().equals(CONDUCTEUR)){
 					Conducteur u = new Conducteur(res.getString("nom"), res.getString("prenom"));
+					u.setLogin(res.getString("codeUtilisateur"));
 					u.setId(res.getInt("idUtilisateur"));
 					lu.add(u);
 				}
