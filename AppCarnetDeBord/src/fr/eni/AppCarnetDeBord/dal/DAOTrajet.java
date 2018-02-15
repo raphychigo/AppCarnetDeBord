@@ -162,4 +162,58 @@ public class DAOTrajet implements DAO<Trajet> {
 		}
 		return leTrajet;
 	}
+	
+	public static void archiver(int id) throws SQLException {
+		Connection cnx = null;
+		try {
+			cnx = AccesBase.getConnection();
+			String archiver = "update Trajets set archive=1 where idTrajet = ?";
+			PreparedStatement rqt = cnx.prepareStatement(archiver);
+			rqt.setInt(1, id);
+			rqt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+	
+	public static void delete(int id) throws SQLException{
+		Connection cnx = null;
+		try {
+			cnx = AccesBase.getConnection();
+			String delete = "delete from Effectuer where idTrajet = ?";
+			PreparedStatement rqt = cnx.prepareStatement(delete);
+			rqt.setInt(1, id);
+			rqt.executeUpdate();
+			delete = "delete from Trajets where idTrajet = ?";
+			rqt = cnx.prepareStatement(delete);
+			rqt.setInt(1, id);
+			rqt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 }
